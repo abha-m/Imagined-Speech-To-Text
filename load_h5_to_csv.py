@@ -24,8 +24,8 @@ test_vowel_u = []
 
 file_va = []
 
-path = "/home/gurpreet/Documents/BE Project/datasets/Speech Imagery Dataset/prj/data/SupplementaryFiles"
-csv_file_path = "/home/gurpreet/Documents/csv_data"
+path = "/home/abha/EEG_dataset/prj/data/SupplementaryFiles"
+csv_file_path = "/home/abha/EEG_dataset/prj_CSV"
 
 
 def files(path):  
@@ -38,13 +38,8 @@ def create_csv(name, new_filename):
         full_path = path+"/"+filename
         f = h5py.File(full_path)
         data = numpy.array(f['filteredEEG']['data'])
-        with open(csv_file_path+'/'+new_filename+'.csv','a') as f_handle:
+        with open(csv_file_path+'/'+new_filename+'.csv','ab') as f_handle:
             numpy.savetxt(f_handle, data, delimiter=",")
-            
-
-
-            
-
 
 for file in files(path):  
     file_va.append(file)
